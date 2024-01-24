@@ -7,8 +7,8 @@ import { LoginComponent } from './components/login/login.component';
 
 // Routes protected by AuthService/Guard
 const protectedRoutes: Routes = [
-  { path: 'profile', component: ProfileComponent, canActivate: [() => inject(AuthGuard).CanActivateFn()]},
-  { path: '', component: HomeComponent, canActivate: [() => inject(AuthGuard).CanActivateFn()]}
+  { path: '', component: HomeComponent, canActivate: [() => inject(AuthGuard).CanActivateFn()]},
+  { path: 'profile', component: ProfileComponent, canActivate: [() => inject(AuthGuard).CanActivateFn()]}
 ]
 
 // Routes allowed outside of AuthService/Guard

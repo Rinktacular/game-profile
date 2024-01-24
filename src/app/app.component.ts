@@ -4,7 +4,6 @@ import { FirebaseService } from 'app/services/firebase.service';
 import { AuthService } from 'app/services/auth.service';
 import { CommonModule } from '@angular/common';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -19,9 +18,8 @@ export class AppComponent {
   constructor(private readonly firebaseService: FirebaseService, private readonly authService: AuthService) {
     this.firebaseService.getApp();
     this.authService.userAuthSubject.subscribe((value) => {
-      // Value is `true` when user has authentication, so we want
+      // Value is `true` when user has authentication.
       this.showNavigation = value;
-      console.log('show nav', this.showNavigation);
-    })
+    });
   }
 }

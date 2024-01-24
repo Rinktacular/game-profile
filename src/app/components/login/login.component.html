@@ -1,14 +1,33 @@
 <div class="flex flex-col items-center justify-center h-screen">
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col w-1/2 h-3/4 gap-4 justify-center bg-neutral-400 p-6">
-    <div class="flex flex-col">
-      <h1 class="text-center ">Game Profile Thing Login</h1>
-      <label for="username">Username</label>
-      <input id="username" type="email" formControlName="username"/>
-    </div>
-    <div class="flex flex-col">
-      <label for="password">Password</label>
-      <input id="password" type="password" formControlName="password"/>
-    </div>
-    <button type="submit">Login</button>
-  </form>
+  <ng-container [ngSwitch]="registrationView === false">
+    <form *ngSwitchCase="true" [formGroup]="loginForm" (ngSubmit)="onLoginUserSubmit()" class="flex flex-col w-1/2 h-3/4 gap-4 justify-center bg-neutral-400 p-6">
+      <div class="flex flex-col">
+        <h1 class="text-center ">Game Profile Thing Login</h1>
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email"/>
+      </div>
+      <div class="flex flex-col">
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password"/>
+      </div>
+      <div class="text-red-500 text-center">{{errorMessage}}</div>
+      <button type="submit">Login</button>
+      <div (click)="registrationView = !registrationView">Register New Account</div>
+    </form>
+    <form *ngSwitchCase="false" [formGroup]="loginForm" (ngSubmit)="onCreateUserSubmit()" class="flex flex-col w-1/2 h-3/4 gap-4 justify-center bg-neutral-400 p-6">
+      <div class="flex flex-col">
+        <h1 class="text-center ">Game Profile Thing Login</h1>
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email"/>
+      </div>
+      <div class="flex flex-col">
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password"/>
+      </div>
+      <div class="text-red-500 text-center">{{errorMessage}}</div>
+      <button type="submit">Login</button>
+      <div (click)="registrationView = !registrationView">Back to login</div>
+    </form>
+  </ng-container>
+
 </div>

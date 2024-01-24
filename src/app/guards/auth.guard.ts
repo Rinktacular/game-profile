@@ -16,6 +16,10 @@ import { catchError, map, of } from 'rxjs';
         router.createUrlTree(['/login']);
         return of(false);
       })
-    );
+    ).subscribe((value) => {
+      if(value === false) {
+        router.navigate(['/login']);
+      }
+    })
   }
 };

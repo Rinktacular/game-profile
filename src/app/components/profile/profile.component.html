@@ -1,1 +1,28 @@
-<p>profile works!</p>
+<p>Create a profile!</p>
+
+<form  [formGroup]="gameForm">
+  <select formControlName="game" id="game" (ngSubmit)="onGameSubmit()">
+    <option value="league_of_legends">League of Legends</option>
+    <option value="world_of_warcraft">World of Warcraft</option>
+    <option value="valorant">Valorant</option>
+    <option value="steam">Steam</option>
+  </select>
+  <select formControlName="achievement" id="achievement">
+    <option value="a">Current Rank</option>
+    <option value="b">Past Rank</option>
+    <option value="c">Time Played</option>
+    <option value="d">Unique Item</option>
+  </select>
+  <input formControlName="value" type="text" id="value" />
+  <button type="submit">Save</button>
+</form>
+
+<div *ngFor="let achivement of achievements">
+  <div class="flex flex-row space-evenly">
+    <div>{{achivement.game}}</div>
+    <div>{{achivement.achievement}}</div>
+    <div>{{achivement.value}}</div>
+  </div>
+</div>
+
+{{achievements}}
